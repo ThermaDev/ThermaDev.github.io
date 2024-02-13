@@ -1,0 +1,41 @@
+body {
+  background-color: #282c34;
+  color: white;
+  height: 100vh;
+}
+
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.bar {
+  flex-grow: 1;
+  padding: auto 16px;
+}
+
+.flex-container {
+  display: flex;
+  padding: 0px 16px;
+  gap: 5px;
+  flex-grow: 160;
+}
+
+.flex-container > div{
+  background: #16181D;
+  border-radius: 5px;
+  padding: 8px;
+}
+
+.resource { 
+  flex-grow:1;
+}
+    
+.main { 
+  flex-grow:2;
+}
+    
+.shop { 
+  flex-grow:1;
+}
