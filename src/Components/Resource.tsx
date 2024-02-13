@@ -1,7 +1,8 @@
 function Resource() {
     return (
-        <div>
-            <h2>Resource</h2>
+        <div className='resource-content'>
+            <h2 className='section-title'>Resources</h2>
+            <button>Scavenge</button>
         </div>
     )
 }

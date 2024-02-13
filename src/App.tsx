@@ -9,9 +9,9 @@ function App() {
     <div className="App">
       <div className='bar'>Header</div>
       <div className='flex-container'>
-        <div className='resource'><Resource /></div>
+        <div className='resource side'><Resource /></div>
         <div className='main'><Main /></div>
-        <div className='shop'><Shop /></div>
+        <div className='shop side'><Shop /></div>
       </div>
       <div className='bar'>Footer</div>
     </div>
