@@ -17,8 +17,8 @@ interface ResourceProviderProps {
 }
 
 export const ResourceProvider: React.FC<ResourceProviderProps> = ({ children }) => {
-  const [money, setMoney] = useState(100);
-  const [metal, setMetal] = useState(100);
+  const [money, setMoney] = useState(0);
+  const [metal, setMetal] = useState(0);
   // Add other resource state variables as needed
 
   const updateMoney = (diff: number) => {
