@@ -1,4 +1,8 @@
-let Unlocks = [
+import { useResearch } from "../Contexts/ResearchContext";
+import { useResources } from "../Contexts/ResourceContext";
+
+
+let technologies = [
   {
     "id": 1,
     "name": "NAND Gates",
@@ -22,26 +26,39 @@ let Unlocks = [
   }
 ];
 
-function ShopItem(props: { name: string; price: number, currency: string }) {
-  return (
-    <button className="shop-item">
-      <h3>{props.name}</h3>
-      <p>{props.price} {props.currency}</p>
-    </button>
-  );
+interface ShopItemProps {
+  id: number;
+  name: string;
+  cost: number;
+  currency: string;
 }
 
 function Shop() {
-  const shopItems = Unlocks.map((item) => {
-    return <ShopItem name={item.name} price={item.cost} currency={item.currency} />;
-  });
+  let resourceContext = useResources();
+  let researchContext = useResearch();
+
+  function getLockedTechnologies() {
+    return technologies.filter((technology) => {
+      return !researchContext.researchedSkills.includes(technology.id);
+    });
+  }
+
+  function onPurchase(shopItem: ShopItemProps) {
+    researchContext.researchTechnology(shopItem.id, shopItem.cost, shopItem.currency);
+  }
+
   return (
-    <>
+    <div>
       <h2 className='section-title'>Shop</h2>
-      <div className='shop-items'>
-        {shopItems}
-      </div>
-    </>
+      <section className="rows">
+      {getLockedTechnologies().map((technology) => (
+        <button key={technology.id} onClick={() => onPurchase(technology)}>
+          <h3>{technology.name}</h3>
+          <p>Cost: {technology.cost} {technology.currency}</p>
+        </button>
+      ))}
+      </section>
+    </div>
   );
 }
 
