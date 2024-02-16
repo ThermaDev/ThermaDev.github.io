@@ -3,13 +3,25 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { AchievementsProvider } from './Contexts/AchievementContext';
+import { ResearchProvider } from './Contexts/ResearchContext';
+import { ResourceProvider } from './Contexts/ResourceContext';
+import { UpgradeProvider } from './Contexts/UpgradeContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <ResourceProvider>
+      <AchievementsProvider>
+        <ResearchProvider>
+          <UpgradeProvider>
+            <App />
+          </UpgradeProvider>
+        </ResearchProvider>
+      </AchievementsProvider>
+    </ResourceProvider>
   </React.StrictMode>
 );
 
